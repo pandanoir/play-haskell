@@ -4,9 +4,10 @@ import Data.List
 import Data.Ord
 list = [1,2,3,4,5]
 
-chunk l size =
-  map (map fst) $ groupBy (\a b -> snd a == snd b) $ zip list $ repeat 0 >> replicate size 0 ++ replicate size 1
+chunkList :: Int -> [a] -> [[a]]
+chunkList _ [] = []
+chunkList n xs = take n xs : chunkList n (drop n xs)
 
 main :: IO ()
 main = do
-    print $ chunk list 2
+    print $ chunkList 2 list
