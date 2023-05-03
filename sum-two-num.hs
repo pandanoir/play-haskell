@@ -11,4 +11,4 @@ main = do
   num1 <- getLine
   putStrLn "enter number"
   num2 <- getLine
-  forM_ (do num1<-toInt num1; num2<- toInt num2; return $ num1 + num2) print
+  forM_ ((+) <$> toInt num1 <*> toInt num2) print
